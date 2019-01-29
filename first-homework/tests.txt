@@ -1,0 +1,14 @@
+createEvent('Gradn opening secrets', true);
+createEvent('Ivana v haskovo');
+createEvent('Koi e po po nai', false);
+createEvent('The voice tour', false);
+addClientToAnEvent(1, 'ivan ivanov', 'male', 21);
+addClientToAnEvent(1, 'pena peneva', 'female', 33);
+
+// printClientsOfAnEvent(1);
+// removeClientFromAnEvent(1, 'ivan ivanov');
+// console.log(events);
+// updateEvent(1, 'otivaite v megami', false);
+// console.log(events);
+// printEvents();
+// deleteEvent(3);
