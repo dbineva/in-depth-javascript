@@ -1,0 +1,64 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#calendar-container {
+    width: 900px;
+    min-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+#calendar-header > *, #current-datetime-data > * {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#calendar-header {
+    background-color: #77808e;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+}
+
+#calendar-header > div {
+    margin-left: 2%;
+    width: 30%;
+}
+
+#current-year {
+    color: #32548c;
+    outline-color: gray;
+}
+
+#calendar-body {
+    position: relative;
+}
+
+#selected-date {
+    text-align: center;
+}
+
+#selected-month {
+    width: 90%;
+}
+
+#navigation {
+    text-align: right;
+}
+
+.day-of-month {
+    display: inline-block;
+    background-color: #32548c;
+    color: white;
+    width: 106.5px;
+    height: 106.5px;
+    text-align: right;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 1px;
+}
+
+.current-date {
+    background-color: #0060ff;
+}
