@@ -1,0 +1,25 @@
+let dom = {
+    create(selector, text) {
+        let el = document.createElement(selector);
+        if (text) el.textContent = text;
+
+        return el;
+    },
+
+    get(selector) {
+        let el = document.querySelector(selector);
+
+        return el;
+    },
+
+    append(parent, data) {
+        if (Array.isArray(data)) {
+            for (const element of data) {
+                parent.appendChild(element);
+            }
+        } 
+        else {
+            parent.appendChild(data);
+        }
+    }
+}
