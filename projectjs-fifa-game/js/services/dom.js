@@ -1,7 +1,7 @@
 let dom = {
     create(selector, text) {
         let el = document.createElement(selector);
-        if (text) el.textContent = text;
+        if (text !== null && text !== '') el.textContent = text;
 
         return el;
     },
