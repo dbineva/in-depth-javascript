@@ -21,5 +21,12 @@ let dom = {
         else {
             parent.appendChild(data);
         }
+    },
+
+    setText(selector, text) {
+        let el = document.querySelector(selector);
+        el.textContent = text;
+
+        return el;
     }
 }

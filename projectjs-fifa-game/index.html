@@ -21,46 +21,47 @@
 
 <body>
     <main class="container">
-        <table class="table table-bordered table-hover text-center" id="matches-table">
-            <tr>
-                <th>Venue</th>
-                <th>Home Team</th>
-                <th>Result</th>
-                <th>Away Team</th>
-            </tr>
-        </table>
-
-        <div id="match-info">
-            <div class="row text-center">
-                <div class="col-4">
-                    <h1 class="display-3" id="home-team-heading">
-
-                    </h1>
-                </div>
-                <div class="col-4">
-                    <h1 class="display-4" id="result-heading">
-                    </h1>
-                </div>
-                <div class="col-4">
-                    <h1 class="display-3" id="away-team-heading">
-
-                    </h1>
-                </div>
-                <hr />
-                <hr>
-                <h6 class="m-auto display-4">Moscow</h2>
-            </div>
-            <table class="table" id="match-info">
+        <div id="matches">
+            <table class="table table-bordered table-hover text-center" id="matches-table">
                 <tr>
-                    <th class="text-center" colspan="3">Team Stats</th>
+                    <th>Venue</th>
+                    <th>Home Team</th>
+                    <th>Result</th>
+                    <th>Away Team</th>
                 </tr>
             </table>
         </div>
+
+        <div id="match-info">
+            <div class="row text-center mb-4">
+                <div class="col-5">
+                    <h1 class="display-3" id="home-team-heading"></h1>
+                </div>
+                <div class="col-2 mt-3">
+                    <h1 class="display-4" id="result-heading"></h1>
+                </div>
+                <div class="col-5">
+                    <h1 class="display-3" id="away-team-heading"></h1>
+                </div>
+                <div class="col-12">
+                    <hr>
+                    <h6 class="m-auto display-4" id="venue"></h2>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-9 m-auto">
+                    <table class="table " id="match-info">
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script src="js/services/ajax.js"></script>
     <script src="js/services/dom.js"></script>
     <script src="js/constants/endpoints.js"></script>
+    <script src="js/managers/viewManager.js"></script>
     <script src="js/main.js"></script>
 </body>
 

@@ -15,6 +15,7 @@ function loadMatches(data) {
 
         currentRow.addEventListener('click', () => {
             let fifaId = currentRow.getAttribute('data-fifa-id');
+            changeView(matchInfoView);
             loadMatchInfo(fifaId);
         });
 
@@ -34,42 +35,58 @@ function loadMatches(data) {
 
 function loadMatchInfo(fifaId) {
     let currentMatch = matches.find((el) => el.fifa_id === fifaId);
+    
+    fillMatchInfoHeadings(currentMatch);
 
-    $('#home-team-heading').text(currentMatch.home_team.country);
-    let result = currentMatch.home_team.goals + ' - ' + currentMatch.home_team.goals;
-    $('#result-heading').text(result);
-    $('#away-team-heading').text(currentMatch.away_team.country);
+    let table = dom.get('#match-info table');
+    initializeMatchInfoTable(table);
 
-    let tableBody = dom.get('#match-info tbody');
-    initializeMatchInfoTable(tableBody);
     let homeTeamStats = currentMatch.home_team_statistics;
     let awayTeamStats = currentMatch.away_team_statistics;
+    fillMatchInfoTable(homeTeamStats, awayTeamStats, table);
+}
 
+function fillMatchInfoHeadings(currentMatch) {
+    dom.setText('#home-team-heading', currentMatch.home_team.country);
+    
+    let result = currentMatch.home_team.goals + ' - ' + currentMatch.home_team.goals;
+    dom.setText('#result-heading', result);
+
+    dom.setText('#away-team-heading', currentMatch.away_team.country);
+    dom.setText('#venue', currentMatch.venue);
+}
+
+function fillMatchInfoTable(homeTeamStats, awayTeamStats, table) {
     for (const key in homeTeamStats) {
-        if (!Array.isArray(homeTeamStats[key])) {
+        if (!Array.isArray(homeTeamStats[key]) && key !== 'country') {
             let currentRow = dom.create('tr');
             let homeTeamStat = dom.create('td', homeTeamStats[key]);
 
             let stat = dom.create('td', beautifyKey(key));
+            stat.className = 'text-center';
+
             let awayTeamStat = dom.create('td', awayTeamStats[key]);
+            awayTeamStat.className = 'text-right';
 
             dom.append(currentRow, [homeTeamStat, stat, awayTeamStat]);
-            dom.append(tableBody, currentRow);
+            dom.append(table, currentRow);
         }
     }
-
-
 }
 
-function initializeMatchInfoTable(tableBody) {
+function initializeMatchInfoTable(table) {
     let headingRow = 
-        `<tr>` +
-            `<th class="text-center" colspan="3">Team Stats</th>` +
-        `</tr>`;
-    tableBody.innerHTML = headingRow;
+        `<thead>` +
+            `<tr>` +
+                `<th class="text-center" colspan="3">Team Stats</th>` +
+            `</tr>` +
+        `</thead>`;
+    table.innerHTML = headingRow;
 }
 
 function beautifyKey(key) {
     key = key.replace(/\_/g, ' ');
+    key = key[0].toUpperCase() + key.substr(1);
+
     return key;
 }
